@@ -19,20 +19,41 @@
   text-align: right;
 }
 
-.like-btn,
-.delete-btn {
-  padding: 5px 10px;
-  border-radius: 5px;
+.like-btn {
+  height: 24px;
+  width: 24px;
   border: none;
-  background-color: #eee;
-  font-size: 14px;
-  font-weight: bold;
-  margin-left: 10px;
+  background-color: transparent;
+  background-image: url('../img/like.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.like-btn_active {
+  height: 24px;
+  width: 24px;
+  border: none;
+  background-color: transparent;
+  background-image: url('../img/like_active.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.delete-btn {
+  height: 24px;
+  width: 24px;
+  border: none;
+  background-color: transparent;
+  background-image: url('../img/recycle.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .like-btn:hover,
 .delete-btn:hover {
-  background-color: #ccc;
   cursor: pointer;
 }
 
@@ -50,7 +71,7 @@
 
 .comment-form input,
 .comment-form textarea {
-  width: 90%;
+  width: 70%;
   padding: 5px;
   font-size: 1.2em;
   border: 1px solid #ccc;
@@ -59,4 +80,9 @@
 
 .comment-form textarea {
   resize: vertical;
+}
+
+.form__btn {
+  width: 700px;
+  height: 50px;
 }

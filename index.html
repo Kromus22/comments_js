@@ -8,6 +8,7 @@
   <title>Document</title>
 
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/index.js" type="module"></script>
 </head>
 
 <body>
@@ -18,13 +19,22 @@
       <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p class="date">05.03.2023</p>
       <div class="comment-buttons">
-        <button class="like-btn">Like</button>
-        <button class="delete-btn">Delete</button>
+        <button class="like-btn"></button>
+        <button class="delete-btn"></button>
+      </div>
+    </div>
+    <div class="comment">
+      <p class="name">Ivan</p>
+      <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="date">05.03.2023</p>
+      <div class="comment-buttons">
+        <button class="like-btn "></button>
+        <button class="delete-btn"></button>
       </div>
     </div>
   </div>
 
-  <form action="#" method="post">
+  <form class="form" action="#">
     <div class="comment-form">
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" placeholder="Your name" required>
@@ -33,9 +43,9 @@
       <textarea name="comment" id="comment" placeholder="Your comment" required></textarea>
 
       <label for="date">Date:</label>
-      <input name="date" id="date" placeholder="Date"></input>
+      <input name="date" id="date" placeholder="DD.MM.YYYY"></input>
 
-      <input type="submit" value="Submit">
+      <button class="form__btn">Submit</button>
     </div>
   </form>
 
