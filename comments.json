@@ -1,0 +1,16 @@
+  [
+    {
+      "id": 1,
+      "name": "SomeGuy",
+      "comm": "Hello!",
+      "date": "07.03.2023",
+      "isLike": false
+    },
+    {
+      "id": 2,
+      "name": "Freeman",
+      "comm": "Hello!",
+      "date": "06.03.2023",
+      "isLike": false
+    }
+  ]
