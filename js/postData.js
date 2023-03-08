@@ -1,5 +1,8 @@
-const postData = (comment) => {
-  return fetch('https://comments-99745-default-rtdb.europe-west1.firebasedatabase.app/comments.json', {
+import { URI_API } from "./consts.js";
+import { getData } from "./getData.js";
+
+export const postData = (comment) => {
+  return fetch(URI_API, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -10,7 +13,6 @@ const postData = (comment) => {
     body: JSON.stringify(comment),
 
   })
-    .then(response => response.json());
+    .then(response => response.json())
+    .then(getData());
 }
-
-export default postData;

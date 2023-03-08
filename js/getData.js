@@ -1,7 +1,14 @@
-const getData = () => {
-  return fetch('https://comments-99745-default-rtdb.europe-west1.firebasedatabase.app/comments.json')
-    .then(req => req.json())
-    .catch(error => ({ error }))
-}
+import { renderComm } from "./renderComm.js";
+import { URI_API } from "./consts.js";
 
-export default getData;
+export const getData = () => {
+  fetch(URI_API)
+    .then(req => req.json())
+    .then(data => {
+      renderComm(data);
+      return data;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
