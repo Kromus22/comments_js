@@ -7,15 +7,17 @@ const submitBtn = form.querySelector('.form__btn');
 const date = new Date();
 const hours = date.getHours();
 const minutes = date.getMinutes();
-const time = `${hours}:${minutes}`
+const time = `${hours}:${minutes}`;
 
 const resetForm = () => {
+  //очистка формы
   form.name.value = '';
   form.comment.value = '';
   form.date.value = '';
 }
 
 submitBtn.addEventListener('click', () => {
+  //формируем объект из данных формы, который отправляем на сервер, и очищаем форму, после этого.
   event.preventDefault();
 
   const comment = {

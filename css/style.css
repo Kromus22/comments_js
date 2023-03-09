@@ -1,5 +1,5 @@
 .comment-container {
-  width: 500px;
+  width: 70%;
   margin: auto;
 }
 
@@ -83,6 +83,6 @@
 }
 
 .form__btn {
-  width: 700px;
+  width: 50%;
   height: 50px;
 }

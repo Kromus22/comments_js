@@ -2,17 +2,17 @@ import { URI_API } from "./consts.js";
 import { getData } from "./getData.js";
 
 export const postData = (comment) => {
+  /*вероятно я сделал как-то странно и криво. но сработало только так.
+  после отправки нового коммента, в конце принудительно вызывается новый запрос на сервер
+  чтобы прилетели новые данные и снова отрендерелись*/
   return fetch(URI_API, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': "POST, GET, OPTIONS, DELETE, PUT",
-      'Access-Control-Allow-Headers': "append, delete, entries, foreach, get, has, keys, set, values, Authorization",
     },
     body: JSON.stringify(comment),
 
   })
     .then(response => response.json())
-    .then(getData());
+    .finally(getData());
 }
