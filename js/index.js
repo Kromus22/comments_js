@@ -16,15 +16,29 @@ const resetForm = () => {
   form.date.value = '';
 }
 
+const checkDateValue = (date) => {
+  if (!date) {
+    const dateNow = new Date();
+    let dayOfMonth = dateNow.getDate();
+    let month = dateNow.getMonth() + 1;
+    const year = dateNow.getFullYear();
+    month = month < 10 ? '0' + month : month;
+    dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
+    const formatDateNow = `${month}.${dayOfMonth}.${year}`;
+
+    return formatDateNow;
+  }
+  return date
+}
+
 submitBtn.addEventListener('click', () => {
   //формируем объект из данных формы, который отправляем на сервер, и очищаем форму, после этого.
   event.preventDefault();
 
   const comment = {
-    id: 1,
     name: form.name.value,
     comm: form.comment.value,
-    date: form.date.value,
+    date: checkDateValue(),
     time: time,
     isLike: false,
   }
@@ -33,4 +47,6 @@ submitBtn.addEventListener('click', () => {
   resetForm();
 });
 
+
 getData();
+

@@ -1,1 +1,1 @@
-export const URI_API = 'https://comments-99745-default-rtdb.europe-west1.firebasedatabase.app/.json';
+export const URI_API = 'https://comments-99745-default-rtdb.europe-west1.firebasedatabase.app/';
