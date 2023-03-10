@@ -1,5 +1,4 @@
 import { URI_API } from "./consts.js";
-import { getData } from "./getData.js";
 
 export const postData = (comment) => {
   /*вероятно я сделал как-то странно и криво. но сработало только так.
@@ -13,6 +12,5 @@ export const postData = (comment) => {
     body: JSON.stringify(comment),
 
   })
-    .then(response => response.json())
-    .finally(getData());
+    .then(response => response.json());
 }

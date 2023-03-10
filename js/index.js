@@ -43,10 +43,11 @@ submitBtn.addEventListener('click', () => {
     isLike: false,
   }
 
-  postData(comment);
-  resetForm();
+  postData(comment)
+    .then(resetForm())
+    .then(renderComm());
 });
 
 
-getData();
+renderComm();
 

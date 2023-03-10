@@ -1,8 +1,9 @@
 import { checkDate } from "./checkDate.js";
 import { deleteData } from "./deleteData.js";
+import { getData } from "./getData.js";
 import { putData } from "./putData.js";
 
-export const renderComm = (data) => {
+export const renderComm = () => {
   /* рендерим комменты, получая данные с сервера, предварительно очищая блок. */
   const container = document.querySelector('.comment-container');
   container.innerHTML = '';
@@ -12,12 +13,14 @@ export const renderComm = (data) => {
   а во втором элементе уже именно вся инфа по комментарию. и в связи с тем, что мне нужен id элемента
   чтобы потом находить их и удалять или менять, то я нашёл такой выход из ситуации. 
   слегка кривой бэк, в общем.*/
-  Object.entries(data).forEach((item) => {
-    const comm = document.createElement('div');
+  getData()
+    .then((data) => {
+      Object.entries(data).forEach((item) => {
+        const comm = document.createElement('div');
 
-    comm.classList.add('comment');
-    comm.dataset.id = item[0];
-    comm.innerHTML = `
+        comm.classList.add('comment');
+        comm.dataset.id = item[0];
+        comm.innerHTML = `
       <p class="name">${item[1].name}</p>
       <p class="comment-text">${item[1].comm}</p>
       <p class="date-info"><span class="date">${checkDate(item[1].date)}</span>, <span class="time">${item[1].time}</span> </p>
@@ -26,9 +29,10 @@ export const renderComm = (data) => {
         <button class="delete-btn" data-id="${item[0]}"></button>
       </div>
     `;
-    container.append(comm);
+        container.append(comm);
 
-  });
+      })
+    });
 
   /*новый виток неописуемой поэзии
   логика кнопок удаления и лайка.

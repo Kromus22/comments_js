@@ -2,11 +2,9 @@ import { renderComm } from "./renderComm.js";
 import { URI_API } from "./consts.js";
 
 export const getData = () => {
-  fetch(URI_API + '.json')
-    .then(req => req.json())
-    .then(data => {
-      renderComm(data);
-      return data;
+  return fetch(URI_API + '.json')
+    .then(req => {
+      return req.json()
     })
     .catch((err) => {
       console.log(err);
