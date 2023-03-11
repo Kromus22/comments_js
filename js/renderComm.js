@@ -43,11 +43,15 @@ export const renderComm = () => {
       const deleteBtns = document.querySelectorAll('.delete-btn');
       const likeBtns = document.querySelectorAll('.like-btn');
 
+      /*я хотел сделать, чтобы при любых изменениях (удалении, лайке или добавлении коммента)
+      данные подгружались и отрисовывались по новой, но как-то не получилось.
+      с удалением я считерил, запрос улетает, из базы коммент удаляется, а на странице я элемент удаляю сам*/
       deleteBtns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-          console.log('hello')
+          const comment = document.querySelector(`[data-id="${e.target.dataset.id}"]`);
           const id = e.target.dataset.id;
           deleteData(id);
+          comment.remove();
         })
       });
 
@@ -79,8 +83,6 @@ export const renderComm = () => {
               isLike: true,
             }
           }
-
-          console.log(data);
 
           const id = e.target.dataset.id;
           putData(id, data);

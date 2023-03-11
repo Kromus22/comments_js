@@ -1,4 +1,5 @@
 import { URI_API } from "./consts.js";
+import { renderComm } from "./renderComm.js";
 
 export const postData = (comment) => {
   /*вероятно я сделал как-то странно и криво. но сработало только так.
@@ -12,5 +13,8 @@ export const postData = (comment) => {
     body: JSON.stringify(comment),
 
   })
-    .then(response => response.json());
+    /*и тут ререндер после отправки нового коммента тоже не срабатывает.
+    вроде переиграл себя в асинхрон, но это не точно*/
+    .then(response => response.json())
+    .then(renderComm());
 }
