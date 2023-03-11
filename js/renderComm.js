@@ -32,61 +32,59 @@ export const renderComm = () => {
         container.append(comm);
 
       })
+      /*новый виток неописуемой поэзии
+      логика кнопок удаления и лайка.
+      я хотел сделать через патч, но CORS не пропускает этот метод.
+      так что я сделал через пут, а он заменяет весь объект.
+      так что необходимо снова заполнять все поля, поэтому я их по новой и собираю.
+      и да, там есть баг с датой. если это Сегодня или Вчера, 
+      то нам вместо даты это и падает потом в базу. у меня уже просто не хватило времени
+      чтобы описать проверку на этот случай. но суть и так ясна, я думаю.*/
+      const deleteBtns = document.querySelectorAll('.delete-btn');
+      const likeBtns = document.querySelectorAll('.like-btn');
+
+      deleteBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          console.log('hello')
+          const id = e.target.dataset.id;
+          deleteData(id);
+        })
+      });
+
+      likeBtns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const comment = document.querySelector(`[data-id="${e.target.dataset.id}"]`);
+          const name = comment.querySelector('.name');
+          const comm = comment.querySelector('.comment-text');
+          const date = comment.querySelector('.date');
+          const time = comment.querySelector('.time');
+
+          console.log(name.textContent)
+
+          btn.classList.toggle('like-btn_active');
+          let data = {
+            name: name.textContent,
+            comm: comm.textContent,
+            date: date.textContent,
+            time: time.textContent,
+            isLike: false,
+          }
+
+          if (btn.classList.contains('like-btn_active')) {
+            data = {
+              name: name.textContent,
+              comm: comm.textContent,
+              date: date.textContent,
+              time: time.textContent,
+              isLike: true,
+            }
+          }
+
+          console.log(data);
+
+          const id = e.target.dataset.id;
+          putData(id, data);
+        })
+      });
     });
-
-  /*новый виток неописуемой поэзии
-  логика кнопок удаления и лайка.
-  я хотел сделать через патч, но CORS не пропускает этот метод.
-  так что я сделал через пут, а он заменяет весь объект.
-  так что необходимо снова заполнять все поля, поэтому я их по новой и собираю.
-  и да, там есть баг с датой. если это Сегодня или Вчера, 
-  то нам вместо даты это и падает потом в базу. у меня уже просто не хватило времени
-  чтобы описать проверку на этот случай. но суть и так ясна, я думаю.*/
-
-  const deleteBtns = document.querySelectorAll('.delete-btn');
-  const likeBtns = document.querySelectorAll('.like-btn');
-
-  likeBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      const comment = document.querySelector(`[data-id="${e.target.dataset.id}"]`);
-      const name = comment.querySelector('.name');
-      const comm = comment.querySelector('.comment-text');
-      const date = comment.querySelector('.date');
-      const time = comment.querySelector('.time');
-
-      console.log(name.textContent)
-
-      btn.classList.toggle('like-btn_active');
-      let data = {
-        name: name.textContent,
-        comm: comm.textContent,
-        date: date.textContent,
-        time: time.textContent,
-        isLike: false,
-      }
-
-      if (btn.classList.contains('like-btn_active')) {
-        data = {
-          name: name.textContent,
-          comm: comm.textContent,
-          date: date.textContent,
-          time: time.textContent,
-          isLike: true,
-        }
-      }
-
-      console.log(data);
-
-      const id = e.target.dataset.id;
-      putData(id, data);
-    })
-  });
-
-  deleteBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      const id = e.target.dataset.id;
-      deleteData(id);
-    })
-  });
 }
-

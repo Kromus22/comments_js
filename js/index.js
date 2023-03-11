@@ -1,6 +1,7 @@
 import { postData } from "./postData.js";
 import { getData } from './getData.js';
 import { renderComm } from "./renderComm.js";
+import { validation } from "./validation.js";
 
 const form = document.querySelector('.form');
 const submitBtn = form.querySelector('.form__btn');
@@ -8,6 +9,8 @@ const date = new Date();
 const hours = date.getHours();
 const minutes = date.getMinutes();
 const time = `${hours}:${minutes}`;
+
+validation();
 
 const resetForm = () => {
   //очистка формы
